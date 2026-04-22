@@ -1,0 +1,47 @@
+@prefix : <http://example.org/turing#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+# 类定义
+:Person a rdfs:Class .
+:Location a rdfs:Class .
+:Concept a rdfs:Class .
+:Event a rdfs:Class .
+:Award a rdfs:Class .
+:Work a rdfs:Class .
+
+# 属性定义
+:bornIn a rdf:Property ; rdfs:domain :Person ; rdfs:range :Location .
+:birthDate a rdf:Property ; rdfs:domain :Person ; rdfs:range xsd:date .
+:proposed a rdf:Property ; rdfs:domain :Person ; rdfs:range :Concept .
+:participatedIn a rdf:Property ; rdfs:domain :Person ; rdfs:range :Event .
+:awarded a rdf:Property ; rdfs:domain :Person ; rdfs:range :Award .
+:wrote a rdf:Property ; rdfs:domain :Person ; rdfs:range :Work .
+:belongsTo a rdf:Property ; rdfs:domain :Concept ; rdfs:range :Concept .
+
+# 实例
+:AlanTuring a :Person .
+:London a :Location .
+:Wilmslow a :Location .
+:TuringMachine a :Concept .
+:TuringTest a :Concept .
+:WWIICodebreaking a :Event .
+:OBE a :Award .
+:OnComputableNumbers a :Work .
+:ComputingMachineryAndIntelligence a :Work .
+:ComputationTheory a :Concept .
+:ArtificialIntelligence a :Concept .
+
+# 事实
+:AlanTuring :birthDate "1912-06-23"^^xsd:date .
+:AlanTuring :bornIn :London .
+:AlanTuring :proposed :TuringMachine .
+:AlanTuring :proposed :TuringTest .
+:AlanTuring :participatedIn :WWIICodebreaking .
+:AlanTuring :awarded :OBE .
+:AlanTuring :wrote :OnComputableNumbers .
+:AlanTuring :wrote :ComputingMachineryAndIntelligence .
+:TuringMachine :belongsTo :ComputationTheory .
+:TuringTest :belongsTo :ArtificialIntelligence .
