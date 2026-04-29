@@ -29,3 +29,8 @@ http://example.org/turing#OnComputableNumbers,http://www.w3.org/1999/02/22-rdf-s
 http://example.org/turing#ComputingMachineryAndIntelligence,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://example.org/turing#Work
 http://example.org/turing#ComputationTheory,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://example.org/turing#Concept
 http://example.org/turing#ArtificialIntelligence,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://example.org/turing#Concept
+He,wrote,paper
+Turing,proposed,test
+Turing,participatedIn,Park
+Turing,diedIn,1954
+He,proposed,machine
