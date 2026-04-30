@@ -1,47 +1,56 @@
-@prefix : <http://example.org/turing#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns1: <http://example.org/turing#http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns2: <http://example.org/turing#> .
+@prefix ns3: <http://example.org/turing#http://example.org/turing#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
-# 类定义
-:Person a rdfs:Class .
-:Location a rdfs:Class .
-:Concept a rdfs:Class .
-:Event a rdfs:Class .
-:Award a rdfs:Class .
-:Work a rdfs:Class .
+ns2:He ns2:proposed "machine" ;
+    ns2:wrote "paper" .
 
-# 属性定义
-:bornIn a rdf:Property ; rdfs:domain :Person ; rdfs:range :Location .
-:birthDate a rdf:Property ; rdfs:domain :Person ; rdfs:range xsd:date .
-:proposed a rdf:Property ; rdfs:domain :Person ; rdfs:range :Concept .
-:participatedIn a rdf:Property ; rdfs:domain :Person ; rdfs:range :Event .
-:awarded a rdf:Property ; rdfs:domain :Person ; rdfs:range :Award .
-:wrote a rdf:Property ; rdfs:domain :Person ; rdfs:range :Work .
-:belongsTo a rdf:Property ; rdfs:domain :Concept ; rdfs:range :Concept .
+ns2:Turing ns2:diedIn "1954" ;
+    ns2:participatedIn "Park" ;
+    ns2:proposed "test" .
 
-# 实例
-:AlanTuring a :Person .
-:London a :Location .
-:Wilmslow a :Location .
-:TuringMachine a :Concept .
-:TuringTest a :Concept .
-:WWIICodebreaking a :Event .
-:OBE a :Award .
-:OnComputableNumbers a :Work .
-:ComputingMachineryAndIntelligence a :Work .
-:ComputationTheory a :Concept .
-:ArtificialIntelligence a :Concept .
+ns3:AlanTuring ns3:awarded "http://example.org/turing#OBE" ;
+    ns3:birthDate "1912-06-23"^^xsd:date ;
+    ns3:bornIn "http://example.org/turing#London" ;
+    ns3:deathDate "1954-06-07"^^xsd:date ;
+    ns3:diedIn "http://example.org/turing#Wilmslow" ;
+    ns3:hasOccupation "http://example.org/turing#ComputerScientist",
+        "http://example.org/turing#Cryptanalyst",
+        "http://example.org/turing#Mathematician" ;
+    ns3:nationality "British" ;
+    ns3:participatedIn "http://example.org/turing#WWIICodebreaking" ;
+    ns3:proposed "http://example.org/turing#TuringMachine",
+        "http://example.org/turing#TuringTest" ;
+    ns3:wrote "http://example.org/turing#ComputingMachineryAndIntelligence",
+        "http://example.org/turing#OnComputableNumbers" ;
+    ns1:type "http://example.org/turing#Person" .
 
-# 事实
-:AlanTuring :birthDate "1912-06-23"^^xsd:date .
-:AlanTuring :bornIn :London .
-:AlanTuring :proposed :TuringMachine .
-:AlanTuring :proposed :TuringTest .
-:AlanTuring :participatedIn :WWIICodebreaking .
-:AlanTuring :awarded :OBE .
-:AlanTuring :wrote :OnComputableNumbers .
-:AlanTuring :wrote :ComputingMachineryAndIntelligence .
-:TuringMachine :belongsTo :ComputationTheory .
-:TuringTest :belongsTo :ArtificialIntelligence .
+ns3:ArtificialIntelligence ns1:type "http://example.org/turing#Concept" .
+
+ns3:ComputationTheory ns1:type "http://example.org/turing#Concept" .
+
+ns3:ComputerScientist ns1:type "http://example.org/turing#Occupation" .
+
+ns3:ComputingMachineryAndIntelligence ns1:type "http://example.org/turing#Work" .
+
+ns3:Cryptanalyst ns1:type "http://example.org/turing#Occupation" .
+
+ns3:London ns1:type "http://example.org/turing#Location" .
+
+ns3:Mathematician ns1:type "http://example.org/turing#Occupation" .
+
+ns3:OBE ns1:type "http://example.org/turing#Award" .
+
+ns3:OnComputableNumbers ns1:type "http://example.org/turing#Work" .
+
+ns3:TuringMachine ns3:belongsTo "http://example.org/turing#ComputationTheory" ;
+    ns1:type "http://example.org/turing#Concept" .
+
+ns3:TuringTest ns3:belongsTo "http://example.org/turing#ArtificialIntelligence" ;
+    ns1:type "http://example.org/turing#Concept" .
+
+ns3:WWIICodebreaking ns1:type "http://example.org/turing#Event" .
+
+ns3:Wilmslow ns1:type "http://example.org/turing#Location" .
+
